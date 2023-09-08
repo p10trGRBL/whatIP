@@ -28,7 +28,7 @@ useEffect(()=>{
     <>
       <div>
         <h2>Hello Stranger! </h2>
-        <img src="/public/a-little-creepy.jpg" alt="creepy meme" />
+        <img src="a-little-creepy.jpg" alt="creepy meme" />
         <h3>But here's your IP address :</h3>
         {(!yourIP)? <p>Loading...</p>:<p>{yourIP}</p>}
       </div>
