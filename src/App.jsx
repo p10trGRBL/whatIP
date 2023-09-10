@@ -13,12 +13,12 @@ const [rawData, setRawData] = useState();
 
 useEffect(()=>{
   axios
-  .get(`https://geo.ipify.org/api/v2/country?apiKey=${import.meta.env.VITE_IPKEY}`)
+  .get(`https://geo.ipify.org/api/v2/country,city?apiKey=${import.meta.env.VITE_IPKEY}`)
   .then((resp)=>{
     //console.log(resp)
     setRawData(resp.data)
     setYourIP(resp.data.ip)
-    console.log(rawData)
+    //console.log(rawData)
   })
   .catch((err)=>{
     console.log(err)
