@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
-import { DateTime } from "luxon";
+import Time from './Time.jsx';
 
 
 
@@ -32,7 +32,7 @@ useEffect(()=>{
 
   return (
     <>
-      <div>
+     
         <h2>Hello Stranger! </h2>
         <p>I've got some info about YOU:<img className="finger" src="finger-pointing.jpeg" alt="finger-pointing"></img> </p>
         
@@ -56,9 +56,9 @@ useEffect(()=>{
          </div>
           }
 
-    
+    <Time/>
       
-      </div>
+  
 
     </>
   )

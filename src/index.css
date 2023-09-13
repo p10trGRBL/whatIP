@@ -76,3 +76,12 @@ button:focus-visible {
   width: 40px;
   height: auto;
 }
+.clock {
+  
+margin: auto;
+ 
+}
+.withClock {
+  display: block;
+ 
+}
