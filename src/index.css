@@ -68,7 +68,11 @@ button:focus-visible {
   }
 }
 .leaflet-container {
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 500px;
 
+}
+.finger {
+  width: 40px;
+  height: auto;
 }

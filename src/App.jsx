@@ -3,50 +3,60 @@ import axios from 'axios';
 import './App.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import { DateTime } from "luxon";
+
 
 
 function App() {
 
-  //console.log(import.meta.env.VITE_IPKEY);
+  //console.log(import.meta.env.VITE_IPKEY) 
 const [yourIP, setYourIP] = useState('');
-const [rawData, setRawData] = useState();
+const [rawData, setRawData] = useState({});
 
 useEffect(()=>{
   axios
   .get(`https://geo.ipify.org/api/v2/country,city?apiKey=${import.meta.env.VITE_IPKEY}`)
   .then((resp)=>{
-    //console.log(resp)
+    //console.log(resp) 
     setRawData(resp.data)
     setYourIP(resp.data.ip)
-    //console.log(rawData)
+  
   })
   .catch((err)=>{
     console.log(err)
   })
 
 }, [])
+//  console.log(yourIP)
+//  console.log(rawData)
 
   return (
     <>
       <div>
         <h2>Hello Stranger! </h2>
-        <img src="a-little-creepy.jpg" alt="creepy meme" />
-        <h3>But here's your IP address :</h3>
-        {(!yourIP)? <p>Loading...</p>:<p>{yourIP}</p>}
-      <div>
-        <h3>And the approximate location: </h3>
-      <MapContainer center={[52.51, 13.38]} zoom={5} scrollWheelZoom={false}>
-  <TileLayer
-    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  />
-  <Marker position={[52.51, 13.38]}>
-    <Popup>
-      Are you here?
-    </Popup>
-  </Marker>
-</MapContainer>
-      </div>
+        <p>I've got some info about YOU:<img className="finger" src="finger-pointing.jpeg" alt="finger-pointing"></img> </p>
+        
+        <h4>Here's your IP address :</h4>
+        {(!yourIP)? <p>Loading...</p>:<h2>{yourIP}</h2>}
+        {(!rawData.location)? <div><img src="a-little-creepy.jpg" alt="creepy meme" /></div>: 
+           <div>
+           <h4>And the approximate location: </h4>
+           <h2>{rawData.location.city}, {rawData.location.region}</h2>
+         <MapContainer center={[`${rawData.location.lat}`, `${rawData.location.lng}`]} zoom={6} scrollWheelZoom={false}>
+     <TileLayer
+       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+     />
+     <Marker position={[`${rawData.location.lat}`, `${rawData.location.lng}`]}>
+       <Popup>
+         Are you here?
+       </Popup>
+     </Marker>
+   </MapContainer>
+         </div>
+          }
+
+    
       
       </div>
 
