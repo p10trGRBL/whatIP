@@ -72,6 +72,11 @@ button:focus-visible {
   height: 500px;
 
 }
+.meme {
+  height: 500px;
+  width: auto;
+}
+
 .finger {
   width: 40px;
   height: auto;
@@ -83,5 +88,28 @@ margin: auto;
 }
 .withClock {
   display: block;
+ 
+}
+.withClock p {
+  font-size: larger;
+  font-weight: bold;
+}
+
+.clockTrio {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+.map {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  
+}
+.cardsContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
  
 }

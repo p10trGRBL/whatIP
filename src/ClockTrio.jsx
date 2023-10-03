@@ -4,7 +4,8 @@ import Clock from 'react-clock';
 import 'react-clock/dist/Clock.css';
 import {Segment } from 'semantic-ui-react';
 
-const Time = () => {
+const ClockTrio=() => {
+
     const [value, setValue] = useState(new Date());
 
     useEffect(() => {
@@ -14,16 +15,26 @@ const Time = () => {
         clearInterval(interval);
       };
     }, []);
-  
-    return (
-        <>
-      <div className="withClock">
-        <p>Your current local time:</p>
-        <Clock className="clock" value={value} />
-        </div>
-       
-       </>
-    );
-}
 
-export default Time;
+return (
+    <>
+        <hr/>
+       <Segment className="clockTrio">
+        <div className="grid-item">
+            <Clock/>
+             <p>London</p>
+        </div>
+         <div className="grid-item">
+            <Clock/>
+            <p>Tokyo</p>
+        </div>
+        <div className="grid-item">
+            <Clock/>
+            <p>New York</p>
+        </div>
+       </Segment>
+    </>
+);
+
+}
+export default ClockTrio;
